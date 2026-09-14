@@ -25,5 +25,306 @@
         <a href="#contato">Contato</a>
       </nav>
     </header>
+
+    <main>
+      <!-- INÍCIO -->
+      <section id="inicio">
+        <h2>Bem-vindo!</h2>
+
+        <p>
+          Para mim, tomar café é mais do que beber alguma coisa. É uma pequena
+          pausa durante o dia.
+        </p>
+
+        <p>
+          Aqui você pode conhecer alguns tipos de café e descobrir qual combina
+          mais com você.
+        </p>
+
+        <img
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+          alt="Xícara de café sobre uma mesa"
+        />
+      </section>
+
+      <!-- CAFÉS -->
+      <section id="cafes">
+        <h2>Tipos de café</h2>
+
+        <p>
+          Existem várias formas de preparar café. Veja alguns dos meus
+          favoritos:
+        </p>
+
+        <h3>☕ Café Espresso</h3>
+
+        <p>
+          É um café pequeno e intenso.
+          <strong>Tem um sabor marcante</strong> e combina muito bem com uma
+          pausa rápida.
+        </p>
+
+        <h3>🥛 Cappuccino</h3>
+
+        <p>
+          Uma mistura de café, leite e espuma. É uma opção mais cremosa e
+          <em>suave para beber tranquilamente</em>.
+        </p>
+
+        <h3>🧊 Café Gelado</h3>
+
+        <p>
+          Uma alternativa refrescante para os dias quentes.<br />
+          Pode ser preparado com gelo e leite.
+        </p>
+      </section>
+
+      <!-- LISTAS -->
+      <section>
+        <h2>O que eu gosto de colocar no café</h2>
+
+        <ul>
+          <li>Leite</li>
+          <li>Canela</li>
+          <li>Chocolate</li>
+          <li>Caramelo</li>
+        </ul>
+
+        <h3>Como preparar um café simples</h3>
+
+        <ol>
+          <li>Esquentar a água.</li>
+          <li>Colocar o pó de café no filtro.</li>
+          <li>Passar a água lentamente.</li>
+          <li>Servir na xícara.</li>
+          <li>Aproveitar o café.</li>
+        </ol>
+      </section>
+
+      <!-- TABELA -->
+      <section>
+        <h2>Comparando alguns cafés</h2>
+
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Café</th>
+              <th>Intensidade</th>
+              <th>Temperatura</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Espresso</td>
+              <td>Alta</td>
+              <td>Quente</td>
+            </tr>
+
+            <tr>
+              <td>Cappuccino</td>
+              <td>Média</td>
+              <td>Quente</td>
+            </tr>
+
+            <tr>
+              <td>Café Gelado</td>
+              <td>Média</td>
+              <td>Gelado</td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="3">Escolha o café de acordo com seu gosto.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <!-- SOBRE -->
+      <section id="sobre">
+        <h2>Sobre o projeto</h2>
+
+        <p>
+          Este site foi criado como um pequeno projeto para praticar HTML e
+          conhecer melhor suas principais tags.
+        </p>
+
+        <details>
+          <summary>Por que escolher o tema café?</summary>
+
+          <p>
+            Porque café faz parte da rotina de muitas pessoas e permite criar um
+            site simples com diferentes informações, listas, imagens, tabelas e
+            formulários.
+          </p>
+        </details>
+      </section>
+
+      <!-- FORMULÁRIO -->
+      <section id="contato">
+        <h2>Conte sua preferência</h2>
+
+        <p>Responda algumas perguntas sobre o seu café favorito.</p>
+
+        <form>
+          <fieldset>
+            <legend>Informações pessoais</legend>
+
+            <label for="nome">Seu nome:</label><br />
+
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Digite seu nome"
+            />
+
+            <br /><br />
+
+            <label for="email">Seu e-mail:</label><br />
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="exemplo@email.com"
+            />
+
+            <br /><br />
+
+            <label for="data">Data da sua resposta:</label><br />
+
+            <input type="date" id="data" name="data" />
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>Qual café você prefere?</legend>
+
+            <input type="radio" id="espresso" name="cafe" value="espresso" />
+
+            <label for="espresso">Espresso</label>
+
+            <br />
+
+            <input
+              type="radio"
+              id="cappuccino"
+              name="cafe"
+              value="cappuccino"
+            />
+
+            <label for="cappuccino">Cappuccino</label>
+
+            <br />
+
+            <input type="radio" id="gelado" name="cafe" value="gelado" />
+
+            <label for="gelado">Café gelado</label>
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>O que você gosta de adicionar?</legend>
+
+            <input type="checkbox" id="leite" name="adicional" value="leite" />
+
+            <label for="leite">Leite</label>
+
+            <br />
+
+            <input
+              type="checkbox"
+              id="canela"
+              name="adicional"
+              value="canela"
+            />
+
+            <label for="canela">Canela</label>
+
+            <br />
+
+            <input
+              type="checkbox"
+              id="chocolate"
+              name="adicional"
+              value="chocolate"
+            />
+
+            <label for="chocolate">Chocolate</label>
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>Como você prefere seu café?</legend>
+
+            <label for="preferencia"> Escolha uma opção: </label>
+
+            <br />
+
+            <select id="preferencia" name="preferencia">
+              <option value="">Selecione</option>
+
+              <option value="forte">Bem forte</option>
+
+              <option value="medio">Médio</option>
+
+              <option value="suave">Suave</option>
+            </select>
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>Deixe uma opinião</legend>
+
+            <label for="mensagem"> O que você acha de café? </label>
+
+            <br />
+
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="5"
+              cols="40"
+              placeholder="Escreva sua opinião aqui..."
+            ></textarea>
+          </fieldset>
+
+          <br />
+
+          <button type="button" onclick="enviarFormulario()">
+            Enviar resposta
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+      <p>© 2026 Meu Cantinho do Café</p>
+
+      <p>Feito para praticar HTML ☕</p>
+
+      <a href="#inicio">Voltar para o início</a>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      function enviarFormulario() {
+        let nome = document.getElementById("nome").value;
+
+        if (nome === "") {
+          alert("Digite seu nome antes de enviar!");
+        } else {
+          alert("Obrigada, " + nome + "! Sua resposta foi enviada.");
+        }
+      }
+    </script>
   </body>
 </html>
