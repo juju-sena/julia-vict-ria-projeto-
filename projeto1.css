@@ -1,0 +1,361 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: #f5eee6;
+    color: #3d2b1f;
+
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    background-color: #5c3d2e;
+    color: white;
+
+    text-align: center;
+
+    padding: 30px 20px;
+}
+
+header h1 {
+    margin: 0;
+
+    font-size: 36px;
+}
+
+header p {
+    font-size: 18px;
+    margin: 10px 0 20px;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    margin: 0 8px;
+
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f2c49b;
+}
+
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
+main {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 30px auto;
+}
+
+
+/* =========================
+   SEÇÕES
+========================= */
+
+section {
+    background-color: white;
+
+    padding: 25px;
+    margin-bottom: 25px;
+
+    border-radius: 10px;
+
+    border: 1px solid #dfcbbb;
+}
+
+section h2 {
+    color: #5c3d2e;
+
+    border-bottom: 2px solid #d8b08c;
+
+    padding-bottom: 8px;
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    color: #795548;
+}
+
+
+/* =========================
+   TEXTOS
+========================= */
+
+p {
+    font-size: 16px;
+}
+
+strong {
+    color: #5c3d2e;
+}
+
+em {
+    color: #9a6b4f;
+}
+
+
+/* =========================
+   IMAGEM
+========================= */
+
+section img {
+    width: 100%;
+    max-width: 700px;
+
+    display: block;
+
+    margin: 20px auto;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   LISTAS
+========================= */
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+
+/* =========================
+   TABELA
+========================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 15px;
+}
+
+th,
+td {
+    border: 1px solid #cdb8a8;
+
+    padding: 12px;
+
+    text-align: center;
+}
+
+th {
+    background-color: #5c3d2e;
+    color: white;
+}
+
+td {
+    background-color: #faf6f2;
+}
+
+
+/* =========================
+   DETAILS
+========================= */
+
+details {
+    background-color: #f4e8dc;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    margin-top: 15px;
+}
+
+summary {
+    cursor: pointer;
+
+    font-weight: bold;
+
+    color: #5c3d2e;
+}
+
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+form {
+    margin-top: 20px;
+}
+
+fieldset {
+    border: 1px solid #d8b08c;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+}
+
+legend {
+    color: #5c3d2e;
+
+    font-weight: bold;
+
+    padding: 0 8px;
+}
+
+label {
+    font-weight: bold;
+}
+
+
+/* =========================
+   CAMPOS
+========================= */
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 10px;
+
+    margin-top: 5px;
+
+    border: 1px solid #cdb8a8;
+
+    border-radius: 5px;
+
+    font-size: 15px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+
+    margin-right: 5px;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+button {
+    background-color: #5c3d2e;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 25px;
+
+    border-radius: 6px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #795548;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    background-color: #3d2b1f;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+footer a {
+    color: #f2c49b;
+
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        display: block;
+
+        margin: 8px;
+    }
+
+    main {
+        width: 95%;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+}
