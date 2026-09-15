@@ -1,14 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Meu Cantinho do Café</title>
+
     <meta
       name="description"
       content="Um pequeno site sobre cafés e momentos especiais."
     />
+
+    <link rel="stylesheet" href="projeto1.css" />
   </head>
+
   <body>
     <!-- CABEÇALHO -->
     <header>
@@ -20,8 +25,12 @@
       </p>
 
       <nav>
-        <a href="#inicio">Início</a> | <a href="#cafes">Cafés</a> |
-        <a href="#sobre">Sobre</a> |
+        <a href="#inicio">Início</a>
+        |
+        <a href="#cafes">Cafés</a>
+        |
+        <a href="#sobre">Sobre</a>
+        |
         <a href="#contato">Contato</a>
       </nav>
     </header>
@@ -74,7 +83,8 @@
         <h3>🧊 Café Gelado</h3>
 
         <p>
-          Uma alternativa refrescante para os dias quentes.<br />
+          Uma alternativa refrescante para os dias quentes.
+          <br />
           Pode ser preparado com gelo e leite.
         </p>
       </section>
@@ -105,7 +115,7 @@
       <section>
         <h2>Comparando alguns cafés</h2>
 
-        <table border="1">
+        <table>
           <thead>
             <tr>
               <th>Café</th>
@@ -169,10 +179,12 @@
         <p>Responda algumas perguntas sobre o seu café favorito.</p>
 
         <form>
+          <!-- INFORMAÇÕES PESSOAIS -->
           <fieldset>
             <legend>Informações pessoais</legend>
 
-            <label for="nome">Seu nome:</label><br />
+            <label for="nome">Seu nome:</label>
+            <br />
 
             <input
               type="text"
@@ -181,9 +193,11 @@
               placeholder="Digite seu nome"
             />
 
-            <br /><br />
+            <br />
+            <br />
 
-            <label for="email">Seu e-mail:</label><br />
+            <label for="email">Seu e-mail:</label>
+            <br />
 
             <input
               type="email"
@@ -192,15 +206,16 @@
               placeholder="exemplo@email.com"
             />
 
-            <br /><br />
+            <br />
+            <br />
 
-            <label for="data">Data da sua resposta:</label><br />
+            <label for="data">Data da sua resposta:</label>
+            <br />
 
             <input type="date" id="data" name="data" />
           </fieldset>
 
-          <br />
-
+          <!-- CAFÉ PREFERIDO -->
           <fieldset>
             <legend>Qual café você prefere?</legend>
 
@@ -226,8 +241,7 @@
             <label for="gelado">Café gelado</label>
           </fieldset>
 
-          <br />
-
+          <!-- ADICIONAIS -->
           <fieldset>
             <legend>O que você gosta de adicionar?</legend>
 
@@ -258,8 +272,7 @@
             <label for="chocolate">Chocolate</label>
           </fieldset>
 
-          <br />
-
+          <!-- PREFERÊNCIA -->
           <fieldset>
             <legend>Como você prefere seu café?</legend>
 
@@ -269,17 +282,13 @@
 
             <select id="preferencia" name="preferencia">
               <option value="">Selecione</option>
-
               <option value="forte">Bem forte</option>
-
               <option value="medio">Médio</option>
-
               <option value="suave">Suave</option>
             </select>
           </fieldset>
 
-          <br />
-
+          <!-- OPINIÃO -->
           <fieldset>
             <legend>Deixe uma opinião</legend>
 
@@ -296,8 +305,7 @@
             ></textarea>
           </fieldset>
 
-          <br />
-
+          <!-- BOTÃO -->
           <button type="button" onclick="enviarFormulario()">
             Enviar resposta
           </button>

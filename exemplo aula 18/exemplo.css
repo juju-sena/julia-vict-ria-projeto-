@@ -1,0 +1,52 @@
+:root {
+  --cor-primaria: rgb(0, 161, 155);
+  --espaçamento-base: 16px;
+  --raio-borda: 8px;
+  --cor-fundo: #050505;
+  --cor-principal-hover: #0fcec7;
+  --cor-secundaria: #c0c0c0;
+  --cor-texto: white;
+  --cor-card: #111111;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: var(--cor-card);
+  padding: var(--espaçamento-base);
+  border-radius: var(--raio-borda);
+  color: var(--cor-texto);
+  text-align: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaçamento-base);
+}
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--espaçamento-base) / 2);
+  text-align: start;
+}
+
+.campo {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto);
+}
+
+.botao-primario {
+  background: var(--cor-primaria);
+  padding: calc(var(--espaçamento-base) / 2);
+  border-radius: var(--raio-borda);
+  transition: 0.5s ease;
+}
+
+.botao-primario:hover {
+  background: var(--cor-principal-hover);
+}
