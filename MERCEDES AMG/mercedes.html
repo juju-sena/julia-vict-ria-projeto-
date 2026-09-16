@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercedes-AMG Petronas F1 - Fan Experience</title>
+    <!-- Tailwind CSS (Link oficial completo) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js para os gráficos de telemetria (Link oficial completo) -->
+    <script src="https://jsdelivr.net"></script>
+    <!-- Lucide Icons para ícones modernos (Link oficial completo) -->
+    <script src="https://unpkg.com"></script>
+    <style>
+      @import url("https://googleapis.com");
+
+      body {
+        background-color: #050505;
+        color: #c8ccce;
+        font-family: "Rajdhani", sans-serif;
+        overflow-x: hidden;
+      }
+      .font-cyber {
+        font-family: "Orbitron", sans-serif;
+      }
+      .text-petronas {
+        color: #27f4d2;
+      }
+      .bg-petronas {
+        background-color: #00a19b;
+      }
+      .border-petronas {
+        border-color: #27f4d2;
+      }
+
+      /* Efeito de brilho Neon */
+      .neon-glow {
+        box-shadow: 0 0 15px rgba(39, 244, 210, 0.2);
+      }
+      .neon-border:hover {
+        box-shadow: 0 0 20px rgba(39, 244, 210, 0.4);
+        border-color: #27f4d2;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #00a19b;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body class="p-4 md:p-8">
+    <!-- HEADER / BARRA DE STATUS -->
+    <header
+      class="max-w-7xl mx-auto mb-8 flex flex-col md:flex-row justify-between items-center border-b border-zinc-800 pb-4 gap-4"
+    >
+      <div class="flex items-center gap-4">
+        <div class="h-3 w-3 rounded-full bg-petronas animate-pulse"></div>
+        <h1 class="text-2xl font-black tracking-widest font-cyber uppercase">
+          Mercedes <span class="text-petronas">Telemetry</span> OS v1.44
+        </h1>
+      </div>
+      <div class="flex items-center gap-6 text-sm font-cyber">
+        <div>STATUS: <span class="text-green-400">ONLINE</span></div>
+        <div>
+          CIRCUITO: <span class="text-petronas">SPA-FRANCORCHAMPS</span>
+        </div>
+        <div id="live-clock">00:00:00</div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- CARD 1: PAINEL PRINCIPAL DE VELOCIDADE (COCKPIT VIRTUAL) -->
+      <div
+        class="lg:col-span-2 bg-zinc-950 border border-zinc-800 rounded-xl p-6 neon-glow flex flex-col justify-between h-[400px]"
+      >
+        <div class="flex justify-between items-center">
+          <span
+            class="text-xs font-cyber tracking-wider text-zinc-500 uppercase"
+            >Live Speed & ERS Monitor</span
+          >
+          <i data-lucide="gauge" class="text-petronas w-5 h-5"></i>
+        </div>
+
+        <div class="flex justify-around items-center my-auto">
+          <!-- Marcha e Velocidade -->
+          <div class="text-center">
+            <div
+              id="live-gear"
+              class="text-8xl font-black font-cyber text-white"
+            >
+              8
+            </div>
+            <div
+              class="text-xs uppercase tracking-widest text-zinc-400 font-cyber"
+            >
+              Marcha
+            </div>
+          </div>
+
+          <div class="text-center">
+            <div
+              id="live-speed"
+              class="text-7xl font-black font-cyber text-petronas"
+            >
+              324
+            </div>
+            <div
+              class="text-xs uppercase tracking-widest text-zinc-400 font-cyber"
+            >
+              KM/H
+            </div>
+          </div>
+
+          <!-- Barra Dinâmica de RPM -->
+          <div
+            class="w-1/3 bg-zinc-900 h-8 rounded p-1 flex gap-1 items-center border border-zinc-800"
+          >
+            <div
+              class="h-full w-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-600 rounded-sm animate-pulse"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Gráfico de Telemetria Inferior -->
+        <div class="h-24">
+          <canvas id="telemetryChart"></canvas>
+        </div>
+      </div>
+
+      <!-- CARD 2: REPRODUTOR DE RÁDIO (SOUNDBOARD DA EQUIPE) -->
+      <div
+        class="bg-zinc-950 border border-zinc-800 rounded-xl p-6 flex flex-col justify-between"
+      >
+        <div>
+          <div class="flex justify-between items-center mb-6">
+            <span
+              class="text-xs font-cyber tracking-wider text-zinc-500 uppercase"
+              >Team Radio Soundboard</span
+            >
+            <i data-lucide="radio" class="text-petronas w-5 h-5"></i>
+          </div>
+          <p class="text-sm text-zinc-400 mb-6">
+            Clique para interceptar as transmissões históricas da garagem:
+          </p>
+
+          <!-- Lista de Áudios -->
+          <div class="space-y-3">
+            <button
+              onclick="playRadio('hammerTime')"
+              class="w-full text-left p-3 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-petronas neon-border transition flex items-center justify-between group"
+            >
+              <div>
+                <div class="font-bold text-white font-cyber text-sm">
+                  "It's Hammer Time, Lewis"
+                </div>
+                <div class="text-xs text-zinc-500">
+                  Engenharia / Comando de Ataque
+                </div>
+              </div>
+              <i
+                data-lucide="play"
+                class="w-4 h-4 text-zinc-500 group-hover:text-petronas transition"
+              ></i>
+            </button>
+
+            <button
+              onclick="playRadio('tiresGone')"
+              class="w-full text-left p-3 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-petronas neon-border transition flex items-center justify-between group"
+            >
+              <div>
+                <div class="font-bold text-white font-cyber text-sm">
+                  "Bono, my tires are gone"
+                </div>
+                <div class="text-xs text-zinc-500">
+                  Lewis Hamilton / Crise de Pneus
+                </div>
+              </div>
+              <i
+                data-lucide="play"
+                class="w-4 h-4 text-zinc-500 group-hover:text-petronas transition"
+              ></i>
+            </button>
+
+            <button
+              onclick="playRadio('getInThere')"
+              class="w-full text-left p-3 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-petronas neon-border transition flex items-center justify-between group"
+            >
+              <div>
+                <div class="font-bold text-white font-cyber text-sm">
+                  "Get in there, Lewis!"
+                </div>
+                <div class="text-xs text-zinc-500">
+                  Peter Bonnington / Vitória Absoluta
+                </div>
+              </div>
+              <i
+                data-lucide="play"
+                class="w-4 h-4 text-zinc-500 group-hover:text-petronas transition"
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="mt-4 pt-4 border-t border-zinc-900 text-xs text-zinc-600 font-cyber text-center"
+        >
+          AUDIO DECODING FEED ACTIVE
+        </div>
+      </div>
+
+      <!-- CARD 3: SIMULADOR DE PIT STOP (MINI GAME) -->
+      <div
+        class="bg-zinc-950 border border-zinc-800 rounded-xl p-6 flex flex-col justify-between h-[320px]"
+      >
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span
+              class="text-xs font-cyber tracking-wider text-zinc-500 uppercase"
+              >Mini-Game // Pit Stop Challenge</span
+            >
+            <i data-lucide="wrench" class="text-petronas w-5 h-5"></i>
+          </div>
+          <p class="text-sm text-zinc-400">
+            Reaja o mais rápido possível para trocar os pneus quando as luzes
+            apagarem!
+          </p>
+        </div>
+
+        <!-- Semáforo Virtual -->
+        <div class="flex justify-center gap-4 my-4">
+          <div
+            id="light-1"
+            class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700 transition-colors"
+          ></div>
+          <div
+            id="light-2"
+            class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700 transition-colors"
+          ></div>
+          <div
+            id="light-3"
+            class="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700 transition-colors"
+          ></div>
+        </div>
+
+        <div
+          class="text-center font-cyber text-xl font-bold mb-2"
+          id="game-status"
+        >
+          PRONTO PARA INICIAR
+        </div>
+
+        <button
+          id="pit-btn"
+          onclick="startPitChallenge()"
+          class="w-full py-3 bg-petronas hover:bg-emerald-400 text-black font-black uppercase font-cyber rounded-lg transition tracking-widest text-sm"
+        >
+          Iniciar Troca de Pneus
+        </button>
+      </div>
+
+      <!-- CARD 4: STATUS DO CARRO / DRS / BATERIA -->
+      <div
+        class="bg-zinc-950 border border-zinc-800 rounded-xl p-6 flex flex-col justify-between h-[320px]"
+      >
+        <div>
+          <div class="flex justify-between items-center mb-6">
+            <span
+              class="text-xs font-cyber tracking-wider text-zinc-500 uppercase"
+              >Power Unit & Aero Status</span
+            >
+            <i data-lucide="cpu" class="text-petronas w-5 h-5"></i>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Bateria MGU-K -->
+            <div>
+              <div class="flex justify-between text-xs font-cyber mb-1">
+                <span>MGU-K ENERGY DEPLOYMENT</span>
+                <span class="text-petronas" id="mgu-val">84%</span>
+              </div>
+              <div
+                class="w-full bg-zinc-900 h-2 rounded border border-zinc-800 overflow-hidden"
+              >
+                <div
+                  id="mgu-bar"
+                  class="h-full bg-petronas transition-all duration-300"
+                  style="width: 84%"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Temperatura dos Pneus -->
+            <div>
+              <div class="flex justify-between text-xs font-cyber mb-1">
+                <span>TYRE TEMP (FRONT LEFT)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
